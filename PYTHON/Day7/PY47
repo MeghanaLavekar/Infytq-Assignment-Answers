@@ -1,0 +1,80 @@
+ Write a python function, encrypt_sentence() which accepts a message and encrypts it based on rules given below and returns the encrypted message.
+Words at odd position -> Reverse It
+Words at even position -> Rearrange the characters so that all consonants appear before the vowels and their order should not change
+
+Note: 
+
+    Assume that the sentence would begin with a word and there will be only a single space between the words.
+    Perform case sensitive string operations wherever necessary.
+
+Also write the pytest test cases to test the program.
+
+
+Sample Input 			Expected Output
+the sun rises in the east 	eht snu sesir ni eht stea
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#PF-Assgn-47
+def encrypt_sentence(sentence):
+    c=0
+    str1=""
+    str2=""
+    j=0
+    vowel=['a','e','i','o','u']
+    for i in range(len(sentence)):
+        #print(i)
+        if c ==0:
+            str1=sentence[j:i]
+            #print(str1)
+        if sentence[i] == " ":
+            if c!=0:
+                str1=sentence[j:i]
+            c+=1
+            #print(c)
+            if c%2 !=0:
+                str2=str2+str1[::-1]+" "
+            else:
+                str3=""
+                str4=""
+                for v in sentence[j:i]:
+                    if v in vowel:
+                        str3=v
+                    else:
+                        str4+=v
+                str2+=str4+str3+" "
+            j=i+1
+        else:
+            pass
+           
+    return str2
+        
+    #start writing your code here
+
+========================== OR =========================
+
+
+def even(s):
+    v=['a','e','i','o','u']
+    r=""
+    t=""
+    for i in s:
+        if i not in v:
+            r+=i
+        else:
+            t+=i
+    return r+t
+def encrypt_sentence(sentence):
+    #start writing your code here
+    l=sentence.split()
+    f=""
+    for i in range(len(l)):
+        if i % 2  == 0:
+            f+=l[i][::-1].lower()+" "
+        if i % 2 != 0:
+            f+=even(l[i])+" "
+    return f
+
+sentence="The sun rises in the east"
+encrypted_sentence=encrypt_sentence(sentence)
+print(encrypted_sentence)

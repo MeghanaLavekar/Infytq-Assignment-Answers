@@ -1,0 +1,153 @@
+*********************************************** 20/21 test cases ****************************************************
+
+Given a stack of lunch boxes maintained in a container, identify the number of lunch boxes of a given color belonging to a manufacturer.
+Write a python program to implement the class diagram given below.
+
+LunchBox
+- color
+- manufacturer
+__init__(color,manufacturer)
++ get_color()
++ get_manufacturer()
+__str__()
+Container
+- box_stack
+__init__(box_stack)
++ get_box_stack()
++ identify_count(color)
+
+Class Description - Container:
+
+box_stack: Stack of lunch boxes where each element in the stack is a lunch box
+
+identify_count(color): Accept a color and return a dictionary containing the name of the manufacturer (key) and count of lunch boxes (value) of mentioned color.
+
+If a lunchbox with the specified color is not found, return 0.
+
+Perform case insensitive string comparison.
+
+Create objects of LunchBox class, push the LunchBox objects into a stack. Create an object of Container class by using the stack created and test your program by invoking the method, identify_count(color).
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#DSA-Prac-10
+class Stack:
+    def __init__(self,max_size):
+        self.__max_size=max_size
+        self.__elements=[None]*self.__max_size
+        self.__top=-1
+            
+    def is_full(self):
+        if(self.__top==self.__max_size-1):
+            return True
+        return False
+    
+    def is_empty(self):
+        if(self.__top==-1):
+            return True
+        return False
+    
+    def push(self,data):
+        if(self.is_full()):
+            print("The stack is full!!")
+        else:
+            self.__top+=1
+            self.__elements[self.__top]=data
+            
+    def pop(self):
+        if(self.is_empty()):
+            print("The stack is empty!!")
+        else:
+            data= self.__elements[self.__top]
+            self.__top-=1
+            return data
+    
+    def display(self):
+        if(self.is_empty()):
+            print("The stack is empty")
+        else:
+            index=self.__top
+            while(index>=0):
+                print(self.__elements[index])
+                index-=1
+    
+    def get_max_size(self):
+        return self.__max_size
+    
+    #You can use the below __str__() to print the elements of the DS object while debugging
+    def __str__(self):
+        msg=[]
+        index=self.__top
+        while(index>=0):
+            msg.append((str)(self.__elements[index]))
+            index-=1
+        msg=" ".join(msg)
+        msg="Stack data(Top to Bottom): "+msg
+        return msg    
+
+#start writing your code here
+class LunchBox:
+    def __init__(self,color,manufacturer):
+        self.__color=color
+        self.__manufacturer=manufacturer
+        
+    def get_color(self):
+        return self.__color
+    def get_manufacturer(self):
+        return self.__manufacturer
+    def __str__(self):
+        pass
+    
+class Container:
+    def __init__(self,box_stack):
+        self.__box_stack=box_stack
+    def get_box_stack(self):
+        return self.__box_stack
+    def identify_count(self,color):
+        n=self.__box_stack.get_max_size()
+        l1=[]
+        l2=[]
+        for i in range(n):
+            t=self.__box_stack.pop()
+            l1.append(t.get_color())
+            l2.append(t.get_manufacturer())
+        print(l1)
+        print(l2)
+        d={}
+        for i in range(len(l1)):
+            l=[]
+            if color.title() == l1[i].title():
+                d.update({l2[i]:l2.count(l2[i])})
+                
+        if len(d) == 0:
+            return 0
+        else:
+            for i in d.keys():
+                c=0
+                for j in range(len(l2)):
+                    if l2[j] == i and l1[j] == color:
+                        c+=1
+                        d.update({i : c})
+            return d
+            
+        
+L=LunchBox("Blue","Signoraware")
+L1=LunchBox("Blue","Tupperware")
+L2=LunchBox("Green","Tupperware")
+L3=LunchBox("Orange","Signoraware")
+L4=LunchBox("Green","Tupperware")
+L5=LunchBox("Blue","Signoraware")
+L6=LunchBox("Blue","Tupperware")
+L7=LunchBox("Blue","Signoraware")
+b=Stack(8)
+b.push(L)
+b.push(L1)
+b.push(L2)
+b.push(L3)
+b.push(L4)
+b.push(L5)
+b.push(L6)
+b.push(L7)
+c=Container(b)
+print(c.identify_count("Blue"))
+

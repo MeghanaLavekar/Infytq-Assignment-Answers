@@ -1,0 +1,34 @@
+********************************************* Not checked test cases ****************************************************
+
+Write a python function, check_anagram() which accepts two strings and returns True, if one string is an anagram of another string. Otherwise returns False.
+
+The two strings are considered to be an anagram if they contain repeating characters but none of the characters repeat at the same position. The length of the strings should be the same.
+
+Also write the pytest test cases to test the program.
+
+Note: Perform case insensitive comparison wherever applicable.
+
+Sample Input 		Expected Output
+eat, tea 		True
+backward,drawback 	False
+			(Reason: character 'a' repeats at position 6, not an anagram)
+Reductions,discounter 	True
+About, table 		False
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#PF-Assgn-54
+def check_anagram(data1,data2):
+    #start writing your code here
+    flag=0
+    if len(data1) == len(data2):
+        for i in range(len(data2)):
+            if data1[i] != data2[i]:
+                flag=1
+            else:
+                flag=0
+    if flag == 1:
+        return True
+    return False
+            
+print(check_anagram("eatt","tea"))

@@ -1,0 +1,35 @@
+Mary is a kindergarten teacher. She has given a task to the children after teaching them a list of words. The task is to find the unknown words (other than the words they already know) from the given text. Write a python function which accepts the text and the known list of words and returns the set of unknown words found.
+
+Return -1 if there are no unknown words.
+
+Estimated Time: 20 minutes
+**********************Time Taken: 4 mins*****************************
+
+Sample Input 						Expected Output
+Text: "the sun rises in the east"
+Vocabulary: ["sun","in","east","doctor","day"] 		{'rises', 'the'}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#DSA-Assgn-18
+
+def find_unknown_words(text,vocabulary):
+    #Remove pass and write your logic here
+    l=[]
+    t=[]
+    l=text.split(" ")
+    #print(l)
+    for i in l:
+        if i not in vocabulary:
+            t.append(i)
+    if len(t) == 0:
+        return -1
+    else:
+        return set(t)
+    
+
+#Pass different values of text and vocabulary to the function and test your program
+text="The sun rises in the east and sets in the west."
+vocabulary = ["sun","in","rises","the","east"]
+unknown_words=find_unknown_words(text,vocabulary)
+print("The unknown words in the file are:",unknown_words)

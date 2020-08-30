@@ -1,0 +1,53 @@
+ A teacher is in the process of generating few reports based on the marks scored by the students of her class in a project based assessment.
+Assume that the marks of her 10 students are available in a tuple. The marks are out of 25.
+
+Write a python program to implement the following functions:
+
+    find_more_than_average(): Find and return the percentage of students who have scored more than the average mark of the class.
+    generate_frequency(): Find how many students have scored the same marks. For example, how many have scored 0, how many have scored 1, how many have scored 3….how many have scored 25. The result should be populated in a list and returned.
+    sort_marks(): Sort the marks in the increasing order from 0 to 25. The sorted values should be populated in a list and returned.
+
+
+Sample Input 					Expected Output
+list_of_marks = (12,18,25,24,2,5,18,20,20,21) 	70.0
+						[0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, 0, 2, 1, 0, 0, 1, 1]
+						[2, 5, 12, 18, 18, 20, 20, 21, 24, 25] 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#PF-Assgn-35
+
+#Global variable
+list_of_marks=(12,18,25,24,2,5,18,20,20,21)
+
+def find_more_than_average():
+    c=0.00
+    avg=sum(list_of_marks)//10
+    for i in list_of_marks:
+        if i > avg:
+            c=c+1.00
+    return (c*10.00)
+    #Remove pass and write your logic here
+
+def sort_marks():
+    list_of_marks1=[]
+    for i in list_of_marks:
+        list_of_marks1.append(i)
+    list_of_marks1.sort()
+    return list_of_marks1
+    
+    #Remove pass and write your logic here
+
+def generate_frequency():
+    f=[]
+    for i in range(0,26):
+        if i in list_of_marks:
+            f.append(list_of_marks.count(i))
+        else:
+            f.append(0)
+    return f
+    
+    #Remove pass and write your logic here
+
+print(find_more_than_average())
+print(generate_frequency())
+print(sort_marks())

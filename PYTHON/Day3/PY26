@@ -1,0 +1,38 @@
+ Write a python program to solve a classic ancient Chinese puzzle.
+
+We count 35 heads and 94 legs among the chickens and rabbits in a farm. How many rabbits and how many chickens do we have?
+
+Estimated time: 15 minutes
+
+Sample Input 		Expected Output
+heads-150 legs-400 	100 50
+heads-3 legs-11 	No solution
+heads-3 legs-12 	0 3
+heads-5 legs-10 	5 0 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#PF-Assgn-26
+
+def solve(heads,legs):
+    error_msg="No solution"
+    chicken_count=0
+    rabbit_count=0
+    y=(legs-2*heads)//2
+    x=(4*heads-legs)//2
+    chicken_count=x
+    rabbit_count=y
+
+    if x < 0 or y < 0 or chicken_count*2+rabbit_count*4 < legs:
+        print(error_msg)
+    else:
+        print(chicken_count,rabbit_count)
+
+    #Start writing your code here
+    #Populate the variables: chicken_count and rabbit_count
+
+    # Use the below given print statements to display the output
+    # Also, do not modify them for verification to work
+
+#Provide different values for heads and legs and test your program
+solve(23,67)

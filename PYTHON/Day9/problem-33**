@@ -1,0 +1,45 @@
+
+Write a python function to identify and return the number name of a given number. The number should be in the range 1 to 1000. If the number is invalid, return -1.
+
+
+Example:
+Sample input 	Expected output
+1 	one
+15 	fifteen
+45 	forty five
+125 	one hundred and twenty five
+999 	nine hundred and ninety nine
+1000 	one thousand
+1211 	-1
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#PF-Prac-33
+def integer_to_english(number):
+    #start writing your code here
+    d={1:"one",2:"two",3:"three",4:"four",5:"five",6:"six",7:"seven",8:"eight",9:"nine",10:"ten"}
+    t={2:"twenty",3:"thirty",4:"forty",5:"fifty",6:"sixty",7:"seventy",8:"eighty",9:"ninety"}
+    
+    s=""
+    if len(str(number)) == 3:
+        for i in d.keys():
+            if int(str(number)[0]) == i:
+                s+=d[i]
+        s+=" "+"hundred"
+        if int(str(number)[1]) == 0 and int(str(number)[2]) == 0:
+            return s
+        else:
+            s+=" "+"and"+" "
+        for i in t.keys():
+            if int(str(number)[1]) == i:
+                s+=t[i]+" "
+        for i in d.keys():
+            if int(str(number)[2]) == i:
+                s+=d[i]
+        return (s)
+    if len(str(number)) == 4:
+        s+="thousand"
+
+
+number=789
+print(integer_to_english(number))

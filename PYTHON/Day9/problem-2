@@ -1,0 +1,30 @@
+Write a python function which accepts a string containing a pattern of brackets and returns true if the pattern of brackets is correct. Otherwise it returns false.
+
+The string of brackets is correct if it satisfies the following conditions:
+1. Number of opening and closing brackets are equal.
+2. Pattern should not start with closing bracket and end with opening bracket.
+
+Sample Input 	Expected Output
+)()((()()) 	False
+()((())()) 	True
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#PF-Prac-2
+def bracket_pattern(input_str):
+    c1=0
+    c2=0
+    if input_str[0] != ")" and input_str[-1] != "(":
+        for i in input_str:
+            if i == "(":
+                c1+=1
+            if i == ")":
+                c2+=1
+        if c1 == c2:
+            return True
+        else:
+            return False
+    else:
+        return False
+input_str="())))"
+print(bracket_pattern(input_str))

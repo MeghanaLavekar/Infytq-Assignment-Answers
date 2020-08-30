@@ -1,0 +1,72 @@
+ Write python function, sms_encoding() which accepts a sentence and converts it into an abbreviated sentence to be sent as SMS and returns the abbreviated sentence.
+
+Rules are as follows:
+a. Spaces are to be retained as is
+b. Each word should be encoded separately
+
+    If a word has only vowels then retain the word as is
+    If a word has a consonant (at least 1) then retain only those consonants
+
+Note: Assume that the sentence would begin with a word and there will be only a single space between the words.
+
+Sample Input 				Expected Output
+I love Python 				I lv Pythn
+MSD says I love cricket and tennis too 	MSD sys I lv crckt nd tnns t
+I will not repeat mistakes 		I wll nt rpt mstks
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#PF-Assgn-50
+
+def sms_encoding(data):
+    list1=[]
+    str1=""
+    vowel=['a','e','i','o','u','A','E','I','O','U']
+    #print(data[-1])
+    for i in data:
+        if i != " ":
+            str1=str1+i
+        if i == " " or i == data[-1]:
+            list1.append(str1)
+            str1=""
+    print(list1)
+    str2=""
+    for i in list1:
+        for j in i:
+            if j in vowel:
+                c=i.count(j)
+                if c == len(i):
+                    str2+=i
+            if j not in vowel:
+                #print(j)
+                str2=str2+j
+        if i != list1[-1]:
+            str2+=" "
+    return str2
+                
+    
+    #start writing your code here
+
+========================= OR ========================
+
+v=['a','e','i','o','u']
+    l=data.split()
+    f=""
+    for w in l:
+        c=0
+        t=""
+        for i in w:
+            if i.lower() not in v:
+                c+=1
+                t+=i
+        if c == 0:
+            f+=w+" "
+            continue
+        else:
+            f+=t+" "
+    return f[0:-1]
+        
+
+
+data="I love Python"
+print(sms_encoding(data))

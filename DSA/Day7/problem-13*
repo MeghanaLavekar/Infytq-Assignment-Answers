@@ -1,0 +1,33 @@
+************************************ 4/6 test cases *********************************************
+
+Imagine you have a special keyboard with the following keys:
+
+
+Key-1: Prints ‘A’ on the screen
+Key-2(Ctrl-A) : Selects the screen
+Key-3(Ctrl-C): Copy selection to buffer
+Key-4(Ctrl-V): Prints the buffer on the screen appending it to whatever has been already printed.
+
+Write a python function which takes the number of times the keys can be pressed as the input and returns the maximum number of A’s that can be printed on the screen.
+
+Sample Input 	Expected Output
+n- 7 	9 (The key sequence can be A, A, A ,Ctrl-A, Ctrl-C, Ctrl-V, Ctrl-V)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+#DSA-Prac-13
+def find_optimal(n):
+    #start writing your code here
+    if n<=5:
+        return n
+    h=n//2
+    t=h+2
+    s=n-t
+    f=h
+    for i in range(s):
+        f+=h
+    return f
+    
+
+
+print(find_optimal(18))

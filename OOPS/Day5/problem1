@@ -1,0 +1,86 @@
+*********************** 13/20 test cases *****************************
+
+Mega Mart, a retail shop, wants to record the number of items bought by its customers.
+
+Write a python program to implement the class diagram given below.
+Purchase
++ list_of_items -> static
++ list_of_count_of_each_item_sold -> static
+- items_purchased
+- item_on_offer
+__init__()
++ get_items_purchased()
++ get_item_on_offer()
++ sell_items(list_of_items_to_be_purchased)
++ provide_offer()
++ find_total_items_sold() -> static
+
+Class Description:
+
+    list_of_items: Static list which contains the list of items available in the store. Initialize it with sample data given in the table
+    Cake 	Soap 	Jam 	Cereal 	Hand Sanitizer 	Biscuits 	Bread
+    list_of_count_of_each_item_sold: Static list which contains count of items sold. Initialize count of each item to 0
+    The above two lists have one-to-one correspondence
+    items_purchased: List which contains the list of items purchased by the customer. Initialize it to an empty list in the constructor
+    item_on_offer: Name of the item provided as an offer. Initialize it to None in the constructor
+    provide_offer(): The shop has decided to give 1 Hand sanitizer free if soap is bought by the customer
+        Increment the count of hand sanitizer in list_of_count_of_each_item_sold by 1
+        Update the instance variable, item_on_offer to "HAND SANITIZER"
+    sell_items(list_of_items_to_be_purchased): Accept the list of items that are to be purchased by the customer
+        For every item in list_of_items_to_be_purchased
+            Increment count of the item in the static list, list_of_count_of_each_item_sold by 1
+            Add the item to attribute, items_purchased list
+        If soap is purchased by the customer, then provide the offer by invoking the appropriate method
+    find_total_items_sold(): Return the total number of items sold by the shop
+
+Note:
+
+    Perform case insensitive string comparison 
+    Assume that customer purchases only 1 quantity of each item and an item will appear only once in the list, list_of_items_to_be_purchased
+
+For testing:
+
+    Create objects of Purchase class
+    Invoke sell_items() on Purchase object by passing the list of items to be purchased by the customer
+    Display the details
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#OOPR-Prac-1
+#Start writing you code here
+
+class Purchase:
+    list_of_items=["CAKE","SOAP","JAM","CEREAL","HAND SANITIZER","BISCUITS","BREAD"]
+    list_of_count_of_each_item_sold=[0,0,0,0,0,0,0]
+
+    def __init__(self):
+        self.__items_purchased=[]
+        self.__item_on_offer=None
+        
+    def get_items_purchased(self):
+        return self.__items_purchased
+        
+    def get_item_on_offer(self):
+        return self.__item_on_offer
+
+    def sell_items(self,list_of_items_to_be_purchased):
+        for i in range(len(list_of_items_to_be_purchased)):
+            if list_of_items_to_be_purchased[i].upper() in Purchase.list_of_items:
+                
+                Purchase.list_of_count_of_each_item_sold[Purchase.list_of_items.index(list_of_items_to_be_purchased[i].upper())]+=1
+                self.__items_purchased.append(list_of_items_to_be_purchased[i])
+                if list_of_items_to_be_purchased[i].upper() == "SOAP":
+                    self.provide_offer()
+        return self.__items_purchased
+    def provide_offer(self):
+        Purchase.list_of_count_of_each_item_sold[Purchase.list_of_items.index("HAND SANITIZER")]+=1
+        self.__item_on_offer="HAND SANITIZER"
+        
+    @staticmethod
+    def find_total_items_sold():
+        pass
+        
+p=Purchase()
+p.sell_items(["JAM", "CHOcolates", "Ghee", "Soap"])
+print(p.get_items_purchased())
+print(Purchase.list_of_count_of_each_item_sold)

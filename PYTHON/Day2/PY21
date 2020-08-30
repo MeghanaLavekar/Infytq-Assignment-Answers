@@ -1,0 +1,73 @@
+ Write a python program to generate and display the next date of a given date.
+
+Assume that
+
+    Date is provided as day, month and year as shown in below table.
+    The input provided is always valid. Output should be day-month-year.
+    Hint: print(day,"-",month,"-",year) will display day-month-year
+
+	Sample Input 	Expected Output
+Day 	1 	          2-9-2015
+Month 	9
+Year 	2015
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#PF-Tryout
+
+'''def generate_next_date(day,month,year):
+    #Start writing your code here
+
+    print(next_day,"-",next_month,"-",next_year)
+
+
+generate_next_date(30,6,2015)'''
+def add1(date):
+    if date ==30 :
+        return 1
+    else:
+        return date+1
+            
+def add2(date):
+    if date ==31:
+        return 1
+    else:
+        return date+1
+        
+def month_date(mnth,date):
+    if mnth ==4 or mnth == 6 or mnth ==9 or mnth ==11:
+        date=add1(date)
+    elif mnth ==1 or mnth == 3 or mnth ==5 or mnth ==7 or mnth ==8 or mnth==10 or mnth == 12:
+        date=add2(date)
+    elif mnth ==2:
+        if date == 28:
+            date=1
+        else:
+            date=date+1
+    else:
+        return date
+            
+    return date 
+    
+def month1(mnth):
+    if mnth ==12:
+        return 1
+    else:
+        return mnth+1
+            
+def year1(y):
+    return y+1
+
+def generate_next_date(day,month,year):
+    next_day=month_date(month,day)
+    if day != 30 and month != 12:
+        next_month=month1(month)
+        next_year=year1(year)
+    else:
+        next_year=year
+        next_month=month
+
+    print(next_day,"-",next_month,"-",next_year)
+
+
+
+generate_next_date(29,11,2015)

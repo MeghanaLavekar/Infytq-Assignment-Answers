@@ -1,0 +1,46 @@
+
+ Assignment 3:
+
+Implement the Customer class based on the identified class structure and details given below:
+
+    1. Consider all instance variables and methods to be public
+    2. Assume that bill_amount is initialized with total bill amount of the customer
+    3. Customer is eligible for 5% discount on the bill amount
+    4. purchases(): Compute discounted bill amount and pay bill
+    5. pays_bill(amount): Display, <customer_name> pays bill amount of Rs. <amount>
+
+Represent few customers, invoke purchases() method and display the details.
+
+Note: Verification is done only for the class structure.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#OOPR-Assgn-3
+#Start writing your code here
+
+class Customer:
+    def __init__(self):
+        self.customer_name="Meghana"
+        self.bill_amount=0
+        
+    def purchases(self):
+        self.bill_amount=200
+        bill_amount=self.bill_amount-((5/100)*self.bill_amount)
+        self.pays_bill(bill_amount)
+        
+    def pays_bill(self,amount):
+        print(self.customer_name,"pays bill amount of Rs.",amount)
+class Item:
+    def __init__(self,item_id,description,price_per_unit):
+        self.item_id=item_id
+        self.description=description
+        self.price_per_unit=price_per_unit
+        
+        
+class Employee:
+    def __init__(self,emp_name,designation):
+        self.emp_name=emp_name
+        self.designation=designation
+        
+c=Customer()
+c.purchases()

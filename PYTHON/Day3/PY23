@@ -1,0 +1,40 @@
+ARS Gems Store sells different varieties of gems to its customers.
+
+Write a Python program to calculate the bill amount to be paid by a customer based on the list of gems and quantity purchased. Any purchase with a total bill amount above Rs.30000 is entitled for 5% discount. If any gem required by the customer is not available in the store, then consider total bill amount to be -1.
+
+Assume that quantity required by the customer for any gem will always be greater than 0.
+
+Perform case-sensitive comparison wherever applicable.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#PF-Assgn-23
+def calculate_bill_amount(gems_list, price_list, reqd_gems,reqd_quantity):
+    bill_amount=0
+    for i in range(len(reqd_gems)):
+        for j in range(len(gems_list)):
+            if reqd_gems[i] == gems_list[j]:
+                bill_amount=bill_amount+price_list[j]*reqd_quantity[i]
+        if reqd_gems[i] not in gems_list:
+            return -1
+            bill_amount=-1
+            break
+    if bill_amount > 30000:
+        bill_amount=bill_amount- (bill_amount*5/100)
+    #Write your logic here
+    return bill_amount
+
+#List of gems available in the store
+gems_list=['Beryl', 'Garnet', 'Quartz']
+
+#Price of gems available in the store. gems_list and price_list have one-to-one correspondence
+price_list=[8723, 2346, 7532]
+
+#List of gems required by the customer
+reqd_gems=['Beryl']
+
+#Quantity of gems required by the customer. reqd_gems and reqd_quantity have one-to-one correspondence
+reqd_quantity=[2]
+
+
+bill_amount=calculate_bill_amount(gems_list, price_list, reqd_gems, reqd_quantity)
+print(bill_amount)

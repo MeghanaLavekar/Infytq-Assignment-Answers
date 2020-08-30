@@ -1,0 +1,61 @@
+**************************************** 1/5 TEST CASE **********************************************
+A 10-substring of a number is a substring of its digits that sum up to 10.
+
+For example, the 10-substrings of the number 3523014 are:
+3523014, 3523014, 3523014, 3523014
+
+Write a python function, find_ten_substring(num_str) which accepts a string and returns the list of 10-substrings of that string.
+
+Handle the possible errors in the code written inside the function.
+
+Sample Input 	Expected Output
+'3523014' 	['5230', '23014', '523', '352']
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#PF-Assgn-41
+def find_ten_substring(num_str):
+    s=10
+    l=[]
+    str1=""
+    for i in range(0,len(num_str)):
+        s1=0
+        for j in range(i+1,len(num_str)):
+            s1+=int(num_str[i])+int(num_str[j])
+            print(s1)
+            if s1 == 10:
+                str1+=num_str[i:j]
+                l.append(str1)
+                str1=""
+            else:
+                pass
+    print(l)
+    '''num=int(num_str)
+    s=0
+    list1=[]
+    for i in range(0,len(num_str)):
+        for j in range(i+1,len(num_str)):
+            s=int(num_str[i])+int(num_str[j])
+            #print(s)
+            if s == 10:
+                list1.append(num_str[i])
+                s=0
+                break
+    str1=""
+    str1=int(str1.join(list1))
+    return(str1)'''
+    '''l=[]
+    for i in range(0,len(num_str)):
+        s=0
+        for j in range(i+1,len(num_str)):
+            if s+int(i)+int(j) == 10:
+                s=0
+                print(num_str[i-1:j+1])
+                l.append(num_str[i-1:j+1])
+    return l'''       
+    #Remove pass and write your logic here
+
+num_str="2825302"
+print("The number is:",num_str)
+result_list=find_ten_substring(num_str)
+print(result_list)

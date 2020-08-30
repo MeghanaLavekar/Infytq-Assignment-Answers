@@ -1,0 +1,25 @@
+***************************************** 2/5 test cases ****************************************
+
+Given the amount and denomination list, write a recursive python function to find and return the number of ways in which the change can be provided for the specified amount using the given denomination list.
+
+Assume that more than one note is available for each amount in the denomination list.
+	Sample Input 				Expected Output
+amount-10
+denomination_list-[10,5,1] 				4
+amount-50
+denomination_list-[50, 25, 10, 5] 			11
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#DSA-Prac-9
+def count_change(amount, coins):
+    #start writing your code here
+    c=0
+    for i in coins:
+        s=amount//i
+        c=c+s
+    return c
+
+
+print(count_change(200, [50, 25, 10, 5, 2, 1]))
+

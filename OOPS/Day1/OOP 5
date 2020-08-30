@@ -1,0 +1,67 @@
+ *********************************************** 19/23 test cases***********************************************
+Assignment 5:
+
+Write a Python program to implement the class chosen with its attributes and methods.
+
+Note:
+
+    Consider all instance variables to be private and methods to be public
+    Include getter and setter methods for all instance variables
+    Display appropriate error message, if the vehicle type is invalid
+    Perform case sensitive string comparison
+
+Represent few objects of the class, initialize instance variables using setter methods, invoke appropriate methods and test your program.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#OOPR-Assgn-5
+#Start writing your code here
+
+class Vehicle:
+    def __init__(self):
+        self.__vehicle_id=0
+        self.__vehicle_type=None
+        self.__vehicle_cost=0
+        self.__premium_amount=0
+    def set_vehicle_id(self,vehicle_id):
+        self.__vehicle_id=vehicle_id
+    def set_vehicle_type(self,vehicle_type):
+        t=["Two Wheeler","Four Wheeler"]
+        if vehicle_type in t:
+            self.__vehicle_type=vehicle_type
+        else:
+            return "invalid Vehicle DETAILS"
+    def set_vehicle_cost(self,vehicle_cost):
+        self.__vehicle_cost=vehicle_cost
+    def calculate_premium(self):
+        t=["Two Wheeler","Four Wheeler"]
+        if self.__vehicle_type in t:
+            if self.__vehicle_type == t[0]:
+                self.__premium_amount=((2/100)*self.__vehicle_cost)
+            if self.__vehicle_type == t[1]:
+                self.__premium_amount=((6/100)*self.__vehicle_cost)
+            return self.__premium_amount
+        else:
+            return  "invalid Vehicle DETAILS"
+        
+    def get_vehicle_id(self):
+        return self.__vehicle_id
+    def get_vehicle_type(self):
+        return self.__vehicle_type
+    def get_vehicle_cost(self):
+        return self.__vehicle_cost
+    def display_vehicle_details(self):
+        print(get_vehicle_id())
+        print(get_vehicle_type())
+        print(get_vehicle_cost())
+        print(get_premium_amount())
+    def set_premium_amount(self):
+        self.__premium_amount=self.calculate_premium()
+    def get_premium_amount(self):
+        return self.__premium_amount
+v1 = Vehicle()
+v1.set_vehicle_id(10)
+v1.set_vehicle_type("Two Wheeler")
+v1.set_vehicle_cost(100000)
+print(v1.calculate_premium())
+            

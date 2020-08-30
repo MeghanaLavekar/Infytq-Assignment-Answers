@@ -1,0 +1,22 @@
+
+
+Given an integer n, write a python function to return true, if it is possible to represent it as a sum of the squares of two different integers, else return false.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#PF-Prac-32
+import math
+def check_squares(number):
+    #start writing your code here
+    for i in range(0,number+1):
+        for j in range(i+1,number+1):
+            if i + j == number:
+                s1=math.sqrt(i)
+                s2=math.sqrt(j)
+                if s1 == int(s1) and s2 == int(s2):
+                    return True
+    return False
+
+
+number=68
+print(check_squares(number))

@@ -1,0 +1,23 @@
+
+Write a python function which accepts a list of numbers and returns true if the list contains a 2 next to a 2. Otherwise it should return false.
+
+Sample Input 		Expected Output
+[ 1,2,1,2,3,4,5,2,2] 	True
+[3,2,5,1,2,1,2] 	False
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#PF-Prac-15
+def check_22(num_list):
+    flag=0
+    for i in range(len(num_list)):
+        if num_list[i] == 2:
+            for j in range(i+1,len(num_list)):
+                if num_list[j] == 2:
+                    return True
+                    flag=1
+                    break
+                else:
+                    break
+    if flag==0:
+        return False
+print(check_22([3,2,5,1,2,1,2,2]))
+

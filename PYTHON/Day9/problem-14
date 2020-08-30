@@ -1,0 +1,32 @@
+
+Write a python function to find and display the five digit number in which the first digit is two more than the second, the second digit is two more than the third, the fourth digit is two less than the third, and the last digit is two more than the fourth. The sum of the third, fourth, and fifth digits equals the first. The sum of all the digits is 19.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#PF-Tryout
+def find_five_digit():
+    for i in range(10000,100000):
+        if int(str(i)[0]) == int(str(i)[1])+2:
+            if int(str(i)[1]) == int(str(i)[2])+2:
+                if int(str(i)[4]) == int(str(i)[3])+2:
+                    s=int(str(i)[2])+int(str(i)[3])+int(str(i)[4])
+                    if s == int(str(i)[0]):
+                        s1=int(str(i)[0])+int(str(i)[1])+int(str(i)[2])+int(str(i)[3])+int(str(i)[4])
+                        if s1 == 19:
+                            print(i)
+                        else:
+                            continue
+                    else:
+                            continue
+                else:
+                            continue
+            else:
+                            continue
+        else:
+                            continue
+                        
+find_five_digit()
+
+
+********************************************** ANS: 75313 ********************************************************************************
+

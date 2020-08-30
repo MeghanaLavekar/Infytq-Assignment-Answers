@@ -1,0 +1,43 @@
+Write a python function find_duplicates(), which accepts a list of numbers and returns another list containing all the duplicate values in the input list. If there are no duplicate values, it should return an empty list.
+
+Also write the pytest test cases to test the program.
+
+Sample Input 					Expected Output
+[12,54,68,759,24,15,12,68,987,758,25,69] 	[12, 68]
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#PF-Assgn-44
+
+def find_duplicates(list_of_numbers):
+    list1=[]
+    list2=[]
+    list3=[]
+    list1=list_of_numbers
+    res = [] 
+    for i in list_of_numbers: 
+        if i not in res: 
+            res.append(i)
+        else:
+            list3.append(i)
+    list3=list(set(list3))
+    print(list3)
+    list3.sort()
+    if list1 == list3:
+        return list2
+    else:
+        return list3
+    #start writing your code here
+
+=============== OR ===================
+
+def find_duplicates(list_of_numbers):
+    l=[]
+    for i in set(list_of_numbers):
+        if list_of_numbers.count(i) > 1:
+            l.append(i)
+    l.sort()
+    return l
+
+list_of_numbers=[1,2,3,3,2,1,4,4,4,1]
+list_of_duplicates=find_duplicates(list_of_numbers)
+print(list_of_duplicates)

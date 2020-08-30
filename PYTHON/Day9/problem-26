@@ -1,0 +1,26 @@
+
+Given a string, write a python function to return True if the strings "mat" and "jet" appear the same number of times in the given string, else return False.
+
+Note: Perform case insensitive string comparison wherever necessary.
+Sample Input 				Expected Output
+Jet on the Mat but mat is too long	False
+mat jet Jet Mat				True
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#PF-Prac-26
+def check_occurence(string):
+    l=string.split(" ")
+    c1=0
+    c2=0
+    for i in l:
+        if i.lower() == "mat":
+            c1+=1
+        if i.lower() == "jet":
+            c2+=1
+    if c1 == c2:
+        return True
+    return False
+        
+string="Jet on the Mat but mat is too long"
+print(check_occurence(string))

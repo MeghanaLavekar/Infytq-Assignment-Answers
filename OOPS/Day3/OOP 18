@@ -1,0 +1,113 @@
+************************************* 35/38 test cases *********************************************************
+
+given the retail store scenario, let's look at the portion of customer purchasing items from the retail store.30 min
+
+Write a python program to implement the class diagram given below.
+
+ Class Description:
+Bill class:
+
+    Initialize static variable counter to 1000
+    generate_bill_amount(item_quantity,items): Calculate bill amount based on the items purchased by the customer
+        Accept a dictionary, item_quantity which contains the item id (key) of the items purchased along with the quantity (value)
+        Accept a list, items which contains the list of Item objects available in the store
+        Generate bill id starting from 1001 prefixed by "B" and initialize attribute, bill_id. Ex. "B1001", "B1002" etc.
+        Calculate bill amount based on the quantity and price of the items purchased by the customer
+        Set attribute, bill_amount with the calculated bill amount
+
+Assume that values in item_quantity and items are always valid.
+Customer class:
+
+pays_bill(bill): Pay bill based on the bill amount
+
+    Accept Bill object which contains the details of the bill to be paid by the customer
+    Update attribute, payment_status to "Paid"
+    Display customer name, bill id and bill amount
+
+Note: Perform case insensitive string comparison
+
+For testing:
+
+    Create objects of Customer class, Item class and Bill class
+    Invoke generate_bill_amount(item_quantity,items) on Bill object by passing the dictionary containing item_id and quantity of items purchased by the Customer and list of Item objects
+    Invoke pays_bill() on Customer object by passing the Bill object
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#OOPR-Assgn-18
+#Start writing your code here
+#items=[]
+class Customer:
+    def __init__(self, customer_name):
+        self.__customer_name=customer_name
+        self.__payment_status=None
+    def pays_bill(self,bill):
+            self.__payment_status="paid"
+            print(self.__customer_name)
+            print(bill.get_bill_id())
+            print(bill.get_bill_amount())
+    def get_customer_name(self):
+        return self.__customer_name
+    def get_payment_status(self):
+        return self.__payment_status
+    
+class Bill:
+    counter=1000
+    def __init__(self):
+        self.__bill_id=1000
+        self.__bill_amount=0
+    def generate_bill_amount(self,item_quantity, items):
+        if not self.__bill_amount:
+            for i,k in item_quantity.items():
+                for j in items:
+                    if j.get_item_id() == i.upper():
+                        self.__bill_amount+=k*j.get_price_per_quantity()
+                        continue
+        
+        if self.__bill_amount>0:
+                Bill.counter += 1
+                self.__bill_id="B"+str(Bill.counter)
+                
+        
+    def get_bill_id(self):
+        return self.__bill_id
+    def get_bill_amount(self):
+        return self.__bill_amount
+        
+class Item:
+    def __init__(self,item_id,description,price_per_quantity):
+        self.__item_id=item_id.upper()
+        self.__description=description.upper()
+        self.__price_per_quantity=price_per_quantity
+        #items.append(self)
+        
+    def get_item_id(self):
+        return self.__item_id
+    def get_description(self):
+        return self.__description
+    def get_price_per_quantity(self):
+        return self.__price_per_quantity
+
+'''[Item(price_per_quantity:100.0 , description:Sunfeast Marie , item_id:IR987), Item(price_per_quantity:151.0 , description:Kellogs Oats , item_id:ir658), Item(price_per_quantity:35.75 , description:Maggie Noodles , item_id:Ir346), Item(price_per_quantity:100.0 , description:Kissan Jam , item_id:iR234), Item(price_per_quantity:55.5 , description:Nescafe , item_id:IR123), Item(price_per_quantity:100.0 , description:Milk , item_id:IR111)],{'IR658':4, 'IR346':2, 'Ir987':3, 'IR123':2}(Method invoked 5 times)'''
+
+       
+item_quantity = {'IR658':4, 'IR346':2, 'Ir987':3, 'IR123':2}
+c=Customer("Meghana")
+i1=Item("IR987","shizwan sauce",100.0)
+i2=Item("ir658","Maggie",151.0)
+i3=Item("Ir346","Maggie Noodles",35.75)
+i4=Item("iR234","Kissan Jam",100.0)
+i5=Item("IR123","Nescafe",55.5)
+i6=Item("IR111","Milk",100.0)
+items=[i1,i2,i3,i4,i5,i6]
+b=Bill()
+b.generate_bill_amount(item_quantity,items)
+b.generate_bill_amount(item_quantity,items)
+b.generate_bill_amount(item_quantity,items)
+b.generate_bill_amount(item_quantity,items)
+b.generate_bill_amount(item_quantity,items)
+c.pays_bill(b)
+print(b.get_bill_id())
+print(b.get_bill_amount())
+
+

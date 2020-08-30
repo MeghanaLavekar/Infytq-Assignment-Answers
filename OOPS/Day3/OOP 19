@@ -1,0 +1,92 @@
+Write a Python program to generate tickets for online bus booking, based on the class diagram given below.
+
+Method description:
+
+    Initialize static variable counter to 0
+    validate_source_destination(): Validate source and destination. source must always be Delhi and destination can be either Mumbai, Chennai, Pune or Kolkata. If both are valid, return true. Else return false
+    generate_ticket():
+        Validate source and destination
+        If valid, generate ticket id and assign it to attribute, ticket_id
+        Ticket id should be generated with the first letter of source followed by first letter of destination and an auto-generated value starting from 01 (Ex: DM01, DP02,.. ,DK10,DC11)
+        Else, set ticket_id as None
+
+Note: Perform case insensitive string comparison
+
+For testing:
+
+    Create objects of Ticket class
+    Invoke generate_ticket() method on Ticket object
+    Display ticket id, passenger name, source, destination
+    In case of error/invalid data, display appropriate error message
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#OOPR-Assgn-19
+#Start writing your code here
+class Ticket:
+    counter=00
+    def __init__(self,passenger_name,source,destination):
+        self.__passenger_name=passenger_name
+        self.__source=source
+        self.__destination=destination
+        self.__ticket_id=None
+    def validate_source_destination(self):
+        d=['Mumbai', 'Chennai', 'Pune' ,'Kolkata']
+        if self.__source.title() == "Delhi" and self.__destination.title() in d:
+            return True
+        else:
+            return False
+        
+    def generate_ticket(self):
+        if self.validate_source_destination():
+            Ticket.counter+=1
+            if Ticket.counter < 10:
+                self.__ticket_id="D"+self.__destination[0].upper()+"0"+str(Ticket.counter)
+            else:
+                self.__ticket_id="D"+self.__destination[0].upper()+str(Ticket.counter)
+        else:
+            self.__ticket_id=None
+        
+    def get_ticket_id(self):
+        return self.__ticket_id
+    def get_passenger_name(self):
+        return self.__passenger_name
+    def get_source(self):
+        return self.__source
+    def get_destination(self):
+        return self.__destination
+        
+'''
+    Create objects of Ticket class
+    Invoke generate_ticket() method on Ticket object
+    Display ticket id, passenger name, source, destination
+    In case of error/invalid data, display appropriate error message
+'''
+t1=Ticket("Meghana","Delhi","mumbai")
+t2=Ticket("Meghana","Delhi","mumbai")
+t3=Ticket("Meghana","Delhi","mumbai")
+t4=Ticket("Meghana","Delhi","mumbai")
+t5=Ticket("Meghana","Delhi","mumbai")
+t6=Ticket("Meghana","Delhi","mumbai")
+t7=Ticket("Meghana","Delhi","mumbai")
+t8=Ticket("Meghana","Delhi","mumbai")
+t9=Ticket("Meghana","Delhi","mumbai")
+t10=Ticket("Meghana","Delhi","chennai")
+#t11=Ticket("Meghana","Delhi","mumbai")
+t1.generate_ticket()
+t2.generate_ticket()
+t3.generate_ticket()
+t4.generate_ticket()
+t5.generate_ticket()
+t6.generate_ticket()
+t7.generate_ticket()
+t8.generate_ticket()
+t9.generate_ticket()
+t10.generate_ticket()
+#t11.generate_ticket()
+print(t9.get_ticket_id())
+print(t9.get_passenger_name())
+print(t9.get_source())
+print(t9.get_destination())
+        
+        
